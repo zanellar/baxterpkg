@@ -11,7 +11,7 @@ from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
 
 # ROS node
 node = RosNode("test")
-node.setHz(node.setupParameter("hz", 10))
+node.setHz(node.setupParameter("hz", 1))
 
 # camera
 camera_right = BaxterCamera(node, limb=BaxterCamera.RIGHT)
@@ -21,7 +21,7 @@ camera_right.setting(resolution=(960, 600), exposure=100, gain=40)
 arm_right = BaxterRobot(node, limb=BaxterRobot.RIGHT)
 
 Ftr_eef = PyKDL.Frame()
-Ftr_eef.p = PyKDL.Vector(0.01, 0.0, 0)
+Ftr_eef.p = PyKDL.Vector(0.0, 0.0001, 0.0)
 
 key = raw_input(".............. reset? [y]/n: ")
 if str(key) not in ["n", "N", "no", "NO"]:

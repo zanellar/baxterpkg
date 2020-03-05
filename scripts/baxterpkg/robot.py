@@ -119,7 +119,7 @@ class BaxterRobot(object):
     def getjoints(self):
         return self.limb.joint_angles()
 
-    def movej(self, q, raw=True):
+    def movej(self, q, raw=False):
         ''' move in joint space by giving a joint configuration as dictionary'''
         if raw:
             self.limb.set_joint_positions(q, raw=raw)
@@ -127,7 +127,7 @@ class BaxterRobot(object):
 
             self.limb.move_to_joint_positions(q)
 
-    def movep(self, pose, raw=True):
+    def movep(self, pose, raw=False):
         ''' move the eef in Cartesian space by giving a geometry_msgs.Pose or a PyKDL.Frame'''
 
         if type(pose) is PyKDL.Frame:

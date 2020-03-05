@@ -8,6 +8,8 @@ from baxterpkg.robot import BaxterRobot
 from baxterpkg.cameras import BaxterCamera
 from geometry_msgs.msg import PoseStamped, Pose, Point, Quaternion
 
+''' This script moves both the arm forward with the gripper pointing down and shows the image form hand cameras'''
+
 # ROS node
 node = RosNode("test")
 node.setHz(node.setupParameter("hz", 30))
@@ -23,16 +25,23 @@ arm_right = BaxterRobot(node, limb=BaxterRobot.RIGHT)
 arm_left = BaxterRobot(node, limb=BaxterRobot.LEFT)
 
 # move to pose
-test_pose = Pose(position=Point(x=0.67,
-                                y=-0.64,
-                                z=-0.21),
-                 orientation=Quaternion(x=1.0,
-                                        y=0.0,
-                                        z=0.0,
-                                        w=0.0))
+test_pose_1 = Pose(position=Point(x=0.60,
+                                  y=-0.20,
+                                  z=0.20),
+                   orientation=Quaternion(x=1.0,
+                                          y=0.0,
+                                          z=0.0,
+                                          w=0.0))
 
-q1r = arm_right.movep(test_pose)
-q1l = arm_left.movep(test_pose)
+test_pose_2 = Pose(position=Point(x=0.60,
+                                  y=0.20,
+                                  z=0.20),
+                   orientation=Quaternion(x=1.0,
+                                          y=0.0,
+                                          z=0.0,
+                                          w=0.0))
+q1r = arm_right.movep(test_pose_1)
+q1l = arm_left.movep(test_pose_2)
 print(q1r, q1l)
 
 while node.isActive():
