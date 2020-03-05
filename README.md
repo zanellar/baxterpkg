@@ -1,2 +1,2 @@
-# Baxter ROS package
-ROS package for baxter robot (a simple wrapper)
+# baxterpkg
+ROS package for baxter robot (wrapper)
